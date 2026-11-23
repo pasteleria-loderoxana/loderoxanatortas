@@ -1,0 +1,1829 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lo de Roxana Tortas · Pastelería Artesanal en Berazategui</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans: ['"Inter"', 'system-ui', 'sans-serif']
+          },
+          colors: {
+            manteca: {
+              50: '#fdfaf5',
+              100: '#faf3e6',
+              200: '#f2e3c6',
+              300: '#e7cf9e'
+            },
+            tostado: {
+              100: '#f5ece1',
+              200: '#e6d3bd',
+              300: '#d2b492',
+              400: '#b88e64',
+              500: '#9e7248'
+            },
+            cacao: {
+              100: '#f2e8df',
+              300: '#c7a487',
+              500: '#8c5834',
+              600: '#734526',
+              700: '#59341c',
+              800: '#3f2312',
+              900: '#271409'
+            },
+            caramelo: {
+              400: '#c48341',
+              500: '#a86829',
+              600: '#87501b'
+            }
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body {
+      background-color: #fdfaf5;
+      color: #271409;
+      font-family: 'Inter', system-ui, sans-serif;
+    }
+    .font-display {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-manteca-50 text-cacao-900 antialiased selection:bg-cacao-600 selection:text-manteca-50">
+
+  <!-- Barra superior de anticipación de 24 horas -->
+  <div class="bg-cacao-900 text-manteca-100 text-xs sm:text-sm py-2.5 px-4 border-b border-cacao-700">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2 font-medium">
+        <i data-lucide="clock" class="w-4 h-4 text-caramelo-400 shrink-0"></i>
+        <span>Pedidos con <strong>mínimo 24 horas de anticipación</strong> · Berazategui, Buenos Aires</span>
+      </div>
+      <div class="flex items-center gap-3 text-manteca-200 text-xs">
+        <span id="min-date-banner" class="font-semibold text-caramelo-400"></span>
+        <span>·</span>
+        <span>WhatsApp: <strong>11 5504-0475</strong></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Encabezado principal y navegación -->
+  <header class="sticky top-0 z-30 bg-manteca-50/95 backdrop-blur border-b border-tostado-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 sm:h-20 gap-4">
+        <a href="#" class="flex items-center gap-3 group min-w-0">
+          <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-cacao-800 text-manteca-100 flex items-center justify-center shadow-sm group-hover:bg-cacao-700 transition shrink-0">
+            <i data-lucide="cake-slice" class="w-5 h-5 text-caramelo-400"></i>
+          </div>
+          <div class="truncate">
+            <h1 class="font-display text-xl sm:text-2xl font-bold tracking-tight text-cacao-900 leading-none truncate">
+              Lo de Roxana Tortas
+            </h1>
+            <p class="text-[11px] sm:text-xs text-cacao-600 font-medium mt-0.5 truncate">
+              Pastelería artesanal · Berazategui
+            </p>
+          </div>
+        </a>
+
+        <nav class="hidden lg:flex items-center gap-1 text-sm font-medium text-cacao-700">
+          <a href="#catalogo" onclick="selectCategory('todos')" class="px-3 py-2 rounded-xl hover:bg-tostado-100 hover:text-cacao-900 transition">Todo el menú</a>
+          <a href="#catalogo" onclick="selectCategory('Tortas')" class="px-3 py-2 rounded-xl hover:bg-tostado-100 hover:text-cacao-900 transition">Tortas</a>
+          <a href="#catalogo" onclick="selectCategory('Minis')" class="px-3 py-2 rounded-xl hover:bg-tostado-100 hover:text-cacao-900 transition">Minis</a>
+          <a href="#catalogo" onclick="selectCategory('Boxes')" class="px-3 py-2 rounded-xl hover:bg-tostado-100 hover:text-cacao-900 transition">Boxes</a>
+          <a href="#catalogo" onclick="selectCategory('Alfajores')" class="px-3 py-2 rounded-xl hover:bg-tostado-100 hover:text-cacao-900 transition">Alfajores</a>
+          <a href="#catalogo" onclick="selectCategory('Scones')" class="px-3 py-2 rounded-xl hover:bg-tostado-100 hover:text-cacao-900 transition">Scones</a>
+          <a href="#catalogo" onclick="selectCategory('Cookies')" class="px-3 py-2 rounded-xl hover:bg-tostado-100 hover:text-cacao-900 transition">Cookies</a>
+          <a href="#pack-scones" class="px-3 py-2 rounded-xl hover:bg-tostado-100 hover:text-cacao-900 transition">Pack x6</a>
+        </nav>
+
+        <div class="flex items-center gap-2.5 shrink-0">
+          <a
+            href="#pedido"
+            class="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-2xl bg-cacao-800 hover:bg-cacao-700 text-manteca-50 text-xs sm:text-sm font-semibold shadow-sm transition"
+          >
+            <i data-lucide="shopping-bag" class="w-4 h-4 text-caramelo-400"></i>
+            <span>Pedido</span>
+            <span id="header-cart-badge" class="px-2 py-0.5 rounded-full bg-caramelo-500 text-manteca-50 text-xs font-bold">0</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Barra de categorías móvil / tablet -->
+      <div class="flex lg:hidden items-center gap-2 py-2.5 overflow-x-auto no-scrollbar border-t border-tostado-100 text-xs font-semibold">
+        <button type="button" onclick="selectCategory('todos')" data-nav-cat="todos" class="nav-pill px-3.5 py-1.5 rounded-full bg-cacao-800 text-manteca-50 whitespace-nowrap">Todos (36)</button>
+        <button type="button" onclick="selectCategory('Tortas')" data-nav-cat="Tortas" class="nav-pill px-3.5 py-1.5 rounded-full bg-tostado-100 text-cacao-800 whitespace-nowrap">Tortas</button>
+        <button type="button" onclick="selectCategory('Minis')" data-nav-cat="Minis" class="nav-pill px-3.5 py-1.5 rounded-full bg-tostado-100 text-cacao-800 whitespace-nowrap">Minis</button>
+        <button type="button" onclick="selectCategory('Boxes')" data-nav-cat="Boxes" class="nav-pill px-3.5 py-1.5 rounded-full bg-tostado-100 text-cacao-800 whitespace-nowrap">Boxes</button>
+        <button type="button" onclick="selectCategory('Alfajores')" data-nav-cat="Alfajores" class="nav-pill px-3.5 py-1.5 rounded-full bg-tostado-100 text-cacao-800 whitespace-nowrap">Alfajores</button>
+        <button type="button" onclick="selectCategory('Scones')" data-nav-cat="Scones" class="nav-pill px-3.5 py-1.5 rounded-full bg-tostado-100 text-cacao-800 whitespace-nowrap">Scones</button>
+        <button type="button" onclick="selectCategory('Cookies')" data-nav-cat="Cookies" class="nav-pill px-3.5 py-1.5 rounded-full bg-tostado-100 text-cacao-800 whitespace-nowrap">Cookies</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sección Hero artesanal -->
+  <section class="relative overflow-hidden bg-gradient-to-b from-manteca-100 via-tostado-100/60 to-manteca-50 border-b border-tostado-200 py-10 sm:py-14">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      <div class="lg:col-span-7 space-y-5">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cacao-100 border border-cacao-300 text-cacao-800 text-xs font-semibold">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5 text-caramelo-600"></i>
+          <span>Elaboración casera por encargo · Berazategui</span>
+        </div>
+
+        <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-cacao-900 leading-[1.05]">
+          Tortas, boxes y pastelería <span class="italic text-cacao-600">hecha con cariño</span>
+        </h2>
+
+        <p class="text-sm sm:text-base text-cacao-700 max-w-2xl leading-relaxed">
+          Explorá los 36 productos de <strong>Lo de Roxana Tortas</strong>, armá tu pack de scones, elegí el sabor de tus cookies y reservá tu fecha con al menos <strong>24 horas de anticipación</strong> para enviar el resumen directo por WhatsApp.
+        </p>
+
+        <div class="flex flex-wrap items-center gap-3 pt-1">
+          <a href="#catalogo" class="px-5 py-3 rounded-2xl bg-cacao-800 hover:bg-cacao-700 text-manteca-50 text-sm font-semibold shadow-sm transition inline-flex items-center gap-2">
+            <span>Ver catálogo completo</span>
+            <i data-lucide="arrow-down" class="w-4 h-4"></i>
+          </a>
+          <a href="#pack-scones" class="px-5 py-3 rounded-2xl bg-manteca-50 hover:bg-tostado-100 text-cacao-800 border border-tostado-300 text-sm font-semibold transition inline-flex items-center gap-2">
+            <i data-lucide="layers" class="w-4 h-4 text-caramelo-600"></i>
+            <span>Armar Pack de Scones (x6)</span>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-3">
+          <div class="p-3.5 rounded-2xl bg-manteca-50 border border-tostado-200 flex items-start gap-2.5">
+            <i data-lucide="calendar-check" class="w-4 h-4 text-caramelo-600 mt-0.5 shrink-0"></i>
+            <div>
+              <p class="text-xs font-bold text-cacao-900">+24 hs de anticipación</p>
+              <p class="text-[11px] text-cacao-600">Hoy y fechas pasadas bloqueadas</p>
+            </div>
+          </div>
+          <div class="p-3.5 rounded-2xl bg-manteca-50 border border-tostado-200 flex items-start gap-2.5">
+            <i data-lucide="utensils" class="w-4 h-4 text-caramelo-600 mt-0.5 shrink-0"></i>
+            <div>
+              <p class="text-xs font-bold text-cacao-900">36 especialidades</p>
+              <p class="text-[11px] text-cacao-600">Tortas, minis, boxes, alfajores y más</p>
+            </div>
+          </div>
+          <div class="p-3.5 rounded-2xl bg-manteca-50 border border-tostado-200 flex items-start gap-2.5">
+            <i data-lucide="message-circle" class="w-4 h-4 text-caramelo-600 mt-0.5 shrink-0"></i>
+            <div>
+              <p class="text-xs font-bold text-cacao-900">Pedido por WhatsApp</p>
+              <p class="text-[11px] text-cacao-600">Envío directo al 11 5504-0475</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-5 grid grid-cols-2 gap-3 sm:gap-4">
+        <div class="space-y-3 sm:space-y-4">
+          <div class="rounded-3xl overflow-hidden border border-tostado-200 bg-manteca-50 shadow-sm aspect-[4/5] relative">
+            <img
+              data-fixed-photo="lemonpie.jfif"
+              data-fallback-label="Lemon Pie · Lo de Roxana"
+              alt="Lemon Pie artesanal"
+              class="w-full h-full object-cover"
+            />
+            <span class="absolute bottom-2.5 left-2.5 px-2.5 py-1 rounded-xl bg-cacao-900/85 text-manteca-50 text-[11px] font-semibold">
+              Lemon Pie
+            </span>
+          </div>
+          <div class="rounded-3xl overflow-hidden border border-tostado-200 bg-manteca-50 shadow-sm aspect-square relative">
+            <img
+              data-fixed-photo="cheesecake.jfif"
+              data-fallback-label="Cheesecake · Lo de Roxana"
+              alt="Cheesecake con frutos rojos"
+              class="w-full h-full object-cover"
+            />
+            <span class="absolute bottom-2.5 left-2.5 px-2.5 py-1 rounded-xl bg-cacao-900/85 text-manteca-50 text-[11px] font-semibold">
+              Cheesecake
+            </span>
+          </div>
+        </div>
+        <div class="space-y-3 sm:space-y-4 pt-6">
+          <div class="rounded-3xl overflow-hidden border border-tostado-200 bg-manteca-50 shadow-sm aspect-square relative">
+            <img
+              data-fixed-photo="brownie.jfif"
+              data-fallback-label="Torta Brownie · Lo de Roxana"
+              alt="Torta Brownie"
+              class="w-full h-full object-cover"
+            />
+            <span class="absolute bottom-2.5 left-2.5 px-2.5 py-1 rounded-xl bg-cacao-900/85 text-manteca-50 text-[11px] font-semibold">
+              Torta Brownie
+            </span>
+          </div>
+          <div class="rounded-3xl overflow-hidden border border-tostado-200 bg-manteca-50 shadow-sm aspect-[4/5] relative">
+            <img
+              data-fixed-photo="box5.jfif"
+              data-fallback-label="Box 5 Alfajorcitos · Lo de Roxana"
+              alt="Box 5 Alfajorcitos surtidos"
+              class="w-full h-full object-cover"
+            />
+            <span class="absolute bottom-2.5 left-2.5 px-2.5 py-1 rounded-xl bg-cacao-900/85 text-manteca-50 text-[11px] font-semibold">
+              Box 5 Alfajores
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Catálogo principal de 36 productos -->
+  <section id="catalogo" class="py-12 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+      <div>
+        <span class="text-xs font-bold uppercase tracking-wider text-caramelo-600">Menú de temporada</span>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold text-cacao-900 mt-1">Catálogo Completo (36 productos)</h2>
+        <p class="text-xs sm:text-sm text-cacao-600 mt-1">
+          Seleccioná variantes cuando corresponda y sumá tus elegidos al pedido.
+        </p>
+      </div>
+
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+        <div class="relative min-w-[240px]">
+          <i data-lucide="search" class="w-4 h-4 text-cacao-500 absolute left-3.5 top-1/2 -translate-y-1/2"></i>
+          <input
+            type="search"
+            id="search-input"
+            oninput="handleSearch(this.value)"
+            placeholder="Buscar torta, box, cookie, scone..."
+            class="w-full pl-10 pr-4 py-2.5 rounded-2xl bg-manteca-50 border border-tostado-300 text-sm text-cacao-900 placeholder:text-cacao-400 focus:outline-none focus:border-cacao-600"
+          />
+        </div>
+        <span id="catalog-count" class="text-xs font-semibold text-cacao-700 bg-tostado-100 border border-tostado-200 px-3.5 py-2.5 rounded-2xl text-center">
+          Mostrando 36 productos
+        </span>
+      </div>
+    </div>
+
+    <div class="hidden lg:flex items-center gap-2 mb-8 flex-wrap">
+      <button type="button" onclick="selectCategory('todos')" data-cat-btn="todos" class="cat-filter-btn px-4 py-2 rounded-2xl text-sm font-semibold bg-cacao-800 text-manteca-50 shadow-sm transition">
+        Todos (36)
+      </button>
+      <button type="button" onclick="selectCategory('Tortas')" data-cat-btn="Tortas" class="cat-filter-btn px-4 py-2 rounded-2xl text-sm font-semibold bg-manteca-50 hover:bg-tostado-100 text-cacao-800 border border-tostado-200 transition">
+        Tortas
+      </button>
+      <button type="button" onclick="selectCategory('Minis')" data-cat-btn="Minis" class="cat-filter-btn px-4 py-2 rounded-2xl text-sm font-semibold bg-manteca-50 hover:bg-tostado-100 text-cacao-800 border border-tostado-200 transition">
+        Minis
+      </button>
+      <button type="button" onclick="selectCategory('Boxes')" data-cat-btn="Boxes" class="cat-filter-btn px-4 py-2 rounded-2xl text-sm font-semibold bg-manteca-50 hover:bg-tostado-100 text-cacao-800 border border-tostado-200 transition">
+        Boxes
+      </button>
+      <button type="button" onclick="selectCategory('Alfajores')" data-cat-btn="Alfajores" class="cat-filter-btn px-4 py-2 rounded-2xl text-sm font-semibold bg-manteca-50 hover:bg-tostado-100 text-cacao-800 border border-tostado-200 transition">
+        Alfajores
+      </button>
+      <button type="button" onclick="selectCategory('Scones')" data-cat-btn="Scones" class="cat-filter-btn px-4 py-2 rounded-2xl text-sm font-semibold bg-manteca-50 hover:bg-tostado-100 text-cacao-800 border border-tostado-200 transition">
+        Scones
+      </button>
+      <button type="button" onclick="selectCategory('Cookies')" data-cat-btn="Cookies" class="cat-filter-btn px-4 py-2 rounded-2xl text-sm font-semibold bg-manteca-50 hover:bg-tostado-100 text-cacao-800 border border-tostado-200 transition">
+        Cookies
+      </button>
+    </div>
+
+    <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+
+    <div id="empty-catalog" class="hidden text-center py-14 px-6 rounded-3xl bg-manteca-100 border border-tostado-200 mt-6">
+      <i data-lucide="cookie" class="w-10 h-10 text-cacao-500 mx-auto mb-3"></i>
+      <h3 class="font-display text-2xl font-bold text-cacao-900">No encontramos productos con ese filtro</h3>
+      <p class="text-sm text-cacao-600 mt-1">Probá limpiando la búsqueda o volviendo a ver todas las categorías.</p>
+      <button type="button" onclick="resetFilters()" class="mt-4 px-4 py-2 rounded-xl bg-cacao-800 text-manteca-50 text-xs font-semibold hover:bg-cacao-700 transition">
+        Ver los 36 productos
+      </button>
+    </div>
+  </section>
+
+  <!-- Constructor interactivo: Pack de Scones (x6) -->
+  <section id="pack-scones" class="py-12 bg-tostado-100/70 border-y border-tostado-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="rounded-3xl bg-manteca-50 border border-tostado-200 p-6 sm:p-8 shadow-sm">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-tostado-200">
+          <div>
+            <span class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-caramelo-600">
+              <i data-lucide="layers" class="w-3.5 h-3.5"></i>
+              Armador personalizado
+            </span>
+            <h2 class="font-display text-3xl sm:text-4xl font-bold text-cacao-900 mt-1">
+              Pack de Scones (x6)
+            </h2>
+            <p class="text-xs sm:text-sm text-cacao-600 mt-1">
+              Armá tu pack de 6 scones sumando por bloques o unidad. El precio se calcula automáticamente según la selección.
+            </p>
+          </div>
+          <div class="flex items-center gap-2">
+            <button
+              type="button"
+              onclick="setPackMode('bloques')"
+              id="pack-mode-bloques"
+              class="px-3.5 py-2 rounded-xl text-xs font-bold bg-cacao-800 text-manteca-50 transition"
+            >
+              Por bloques (x6 / x3 / x2)
+            </button>
+            <button
+              type="button"
+              onclick="setPackMode('unidad')"
+              id="pack-mode-unidad"
+              class="px-3.5 py-2 rounded-xl text-xs font-bold bg-tostado-100 text-cacao-800 border border-tostado-200 transition"
+            >
+              Unidad (1 a 6)
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 pt-6 items-start">
+          <div class="lg:col-span-7 space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold uppercase tracking-wider text-cacao-700">
+                Unidades seleccionadas: <span id="pack-total-count" class="text-cacao-900 text-sm">6 / 6</span>
+              </span>
+              <button type="button" onclick="resetPackBuilder()" class="text-xs font-semibold text-cacao-600 hover:text-cacao-900 underline">
+                Reiniciar a 6 clásicos
+              </button>
+            </div>
+
+            <div id="pack-builder-rows" class="space-y-3"></div>
+          </div>
+
+          <div class="lg:col-span-5 rounded-2xl bg-manteca-100 border border-tostado-200 p-5 space-y-4">
+            <div class="flex items-center justify-between">
+              <h3 class="font-display text-2xl font-bold text-cacao-900">Resumen del Pack</h3>
+              <span id="pack-status-pill" class="px-2.5 py-1 rounded-full text-[11px] font-bold bg-cacao-800 text-manteca-50">
+                Listo (6/6)
+              </span>
+            </div>
+
+            <div id="pack-summary-detail" class="text-xs text-cacao-700 space-y-1.5 min-h-[56px]"></div>
+
+            <div class="pt-3 border-t border-tostado-200 flex items-baseline justify-between">
+              <span class="text-xs font-semibold text-cacao-600">Total calculado</span>
+              <span id="pack-calculated-price" class="text-2xl font-bold text-cacao-900">$10.000</span>
+            </div>
+
+            <p id="pack-validation-msg" class="text-[11px] text-caramelo-600 font-medium hidden"></p>
+
+            <button
+              type="button"
+              id="add-pack-btn"
+              onclick="addCustomPackToCart()"
+              class="w-full py-3 px-4 rounded-2xl bg-cacao-800 hover:bg-cacao-700 disabled:bg-tostado-300 disabled:text-cacao-600 text-manteca-50 text-sm font-semibold shadow-sm transition flex items-center justify-center gap-2"
+            >
+              <i data-lucide="plus-circle" class="w-4 h-4"></i>
+              <span>Agregar Pack de Scones al pedido</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección de pedido, calendario (+24 hs) y envío por WhatsApp -->
+  <section id="pedido" class="py-12 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mb-8">
+      <span class="text-xs font-bold uppercase tracking-wider text-caramelo-600">Coordinación y entrega</span>
+      <h2 class="font-display text-3xl sm:text-4xl font-bold text-cacao-900 mt-1">Tu Pedido & Calendario (+24 hs)</h2>
+      <p class="text-xs sm:text-sm text-cacao-600 mt-1">
+        Todos los encargos requieren al menos 24 horas de anticipación. Elegí una fecha habilitada y enviá tu pedido al <strong>11 5504-0475</strong>.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <div class="lg:col-span-7 space-y-6">
+        <div class="rounded-3xl bg-manteca-50 border border-tostado-200 p-6 shadow-sm">
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <h3 class="font-display text-2xl font-bold text-cacao-900">Fecha de retiro o entrega</h3>
+              <p id="calendar-rule-subtitle" class="text-xs text-cacao-600"></p>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <button type="button" onclick="changeMonth(-1)" aria-label="Mes anterior" class="p-2 rounded-xl bg-tostado-100 hover:bg-tostado-200 text-cacao-800 transition">
+                <i data-lucide="chevron-left" class="w-4 h-4"></i>
+              </button>
+              <span id="calendar-month-label" class="px-2.5 text-xs sm:text-sm font-bold text-cacao-900 min-w-[125px] text-center"></span>
+              <button type="button" onclick="changeMonth(1)" aria-label="Mes siguiente" class="p-2 rounded-xl bg-tostado-100 hover:bg-tostado-200 text-cacao-800 transition">
+                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-7 gap-1 text-center text-[11px] font-bold text-cacao-500 uppercase mb-2">
+            <div>Lun</div>
+            <div>Mar</div>
+            <div>Mié</div>
+            <div>Jue</div>
+            <div>Vie</div>
+            <div>Sáb</div>
+            <div>Dom</div>
+          </div>
+
+          <div id="calendar-days-grid" class="grid grid-cols-7 gap-1.5"></div>
+
+          <div class="mt-4 pt-4 border-t border-tostado-200 flex flex-wrap items-center justify-between gap-3 text-xs">
+            <div class="flex items-center gap-4">
+              <span class="inline-flex items-center gap-1.5 text-cacao-700">
+                <span class="w-3 h-3 rounded bg-cacao-800 inline-block"></span> Seleccionada
+              </span>
+              <span class="inline-flex items-center gap-1.5 text-cacao-700">
+                <span class="w-3 h-3 rounded bg-tostado-100 border border-tostado-300 inline-block"></span> Disponible (+24 hs)
+              </span>
+              <span class="inline-flex items-center gap-1.5 text-cacao-400">
+                <span class="w-3 h-3 rounded bg-tostado-200/50 inline-block"></span> Bloqueada
+              </span>
+            </div>
+            <span id="selected-date-readout" class="font-bold text-cacao-900"></span>
+          </div>
+        </div>
+
+        <div class="rounded-3xl bg-manteca-50 border border-tostado-200 p-6 shadow-sm space-y-5">
+          <h3 class="font-display text-2xl font-bold text-cacao-900">Datos para el pedido</h3>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="customer-name" class="block text-xs font-bold text-cacao-800 mb-1.5">Tu nombre *</label>
+              <input
+                type="text"
+                id="customer-name"
+                placeholder="Ej. Lucía Fernández"
+                class="w-full px-3.5 py-2.5 rounded-2xl bg-manteca-100 border border-tostado-200 text-sm text-cacao-900 focus:outline-none focus:border-cacao-600"
+              />
+            </div>
+            <div>
+              <label for="customer-phone" class="block text-xs font-bold text-cacao-800 mb-1.5">Tu WhatsApp / teléfono</label>
+              <input
+                type="tel"
+                id="customer-phone"
+                placeholder="Ej. 11 6000-0000"
+                class="w-full px-3.5 py-2.5 rounded-2xl bg-manteca-100 border border-tostado-200 text-sm text-cacao-900 focus:outline-none focus:border-cacao-600"
+              />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-cacao-800 mb-1.5">Modalidad</label>
+              <div class="grid grid-cols-2 gap-2">
+                <button type="button" onclick="setDeliveryMethod('retiro')" id="btn-method-retiro" class="py-2.5 px-3 rounded-2xl text-xs font-bold bg-cacao-800 text-manteca-50 transition">
+                  Retiro en Berazategui
+                </button>
+                <button type="button" onclick="setDeliveryMethod('envio')" id="btn-method-envio" class="py-2.5 px-3 rounded-2xl text-xs font-bold bg-tostado-100 text-cacao-800 border border-tostado-200 transition">
+                  Envío a coordinar
+                </button>
+              </div>
+            </div>
+
+            <div>
+              <label for="time-slot-select" class="block text-xs font-bold text-cacao-800 mb-1.5">Franja horaria</label>
+              <select
+                id="time-slot-select"
+                onchange="state.timeSlot = this.value"
+                class="w-full px-3.5 py-2.5 rounded-2xl bg-manteca-100 border border-tostado-200 text-sm text-cacao-900 focus:outline-none focus:border-cacao-600"
+              >
+                <option value="Turno Mañana (10:00 a 13:00 hs)">Turno Mañana (10:00 a 13:00 hs)</option>
+                <option value="Turno Tarde (14:00 a 18:00 hs)">Turno Tarde (14:00 a 18:00 hs)</option>
+                <option value="A coordinar por WhatsApp">A coordinar por WhatsApp</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="address-field-wrap" class="hidden">
+            <label for="customer-address" class="block text-xs font-bold text-cacao-800 mb-1.5">Dirección / localidad para envío</label>
+            <input
+              type="text"
+              id="customer-address"
+              placeholder="Calle, altura y localidad (ej. Berazategui centro)"
+              class="w-full px-3.5 py-2.5 rounded-2xl bg-manteca-100 border border-tostado-200 text-sm text-cacao-900 focus:outline-none focus:border-cacao-600"
+            />
+          </div>
+
+          <div>
+            <label for="customer-notes" class="block text-xs font-bold text-cacao-800 mb-1.5">Dedicatoria o aclaraciones</label>
+            <textarea
+              id="customer-notes"
+              rows="2"
+              placeholder="Ej. Sin nueces en un scone, vela o detalle para cumpleaños..."
+              class="w-full px-3.5 py-2.5 rounded-2xl bg-manteca-100 border border-tostado-200 text-sm text-cacao-900 focus:outline-none focus:border-cacao-600"
+            ></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-5 rounded-3xl bg-manteca-50 border border-tostado-200 p-6 shadow-sm sticky top-24 space-y-5">
+        <div class="flex items-center justify-between pb-4 border-b border-tostado-200">
+          <div>
+            <h3 class="font-display text-2xl font-bold text-cacao-900">Resumen del Pedido</h3>
+            <p class="text-xs text-cacao-600">Destino: <strong>Lo de Roxana Tortas (11 5504-0475)</strong></p>
+          </div>
+          <button type="button" onclick="clearCart()" class="text-xs font-semibold text-cacao-600 hover:text-cacao-900 underline">
+            Vaciar
+          </button>
+        </div>
+
+        <div id="cart-items-list" class="space-y-3 max-h-[340px] overflow-y-auto pr-1"></div>
+
+        <div id="cart-totals-box" class="pt-4 border-t border-tostado-200 space-y-2 text-sm">
+          <div class="flex justify-between text-cacao-700">
+            <span>Subtotal estimado</span>
+            <span id="cart-subtotal" class="font-bold text-cacao-900">$0</span>
+          </div>
+          <p id="cart-consult-note" class="hidden text-[11px] text-caramelo-600 font-medium">
+            * Incluye productos a consultar precio (se confirman al enviar el mensaje).
+          </p>
+        </div>
+
+        <div id="checkout-feedback" class="hidden p-3 rounded-2xl bg-tostado-100 border border-caramelo-400 text-xs text-cacao-900 font-medium"></div>
+
+        <button
+          type="button"
+          onclick="openWhatsappSummaryModal()"
+          class="w-full py-3.5 px-5 rounded-2xl bg-cacao-800 hover:bg-cacao-700 text-manteca-50 text-sm font-bold shadow-sm transition flex items-center justify-center gap-2"
+        >
+          <i data-lucide="send" class="w-4 h-4 text-caramelo-400"></i>
+          <span>Preparar pedido para WhatsApp</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pie de página -->
+  <footer class="bg-cacao-900 text-manteca-100 py-10 px-4 sm:px-6 lg:px-8 border-t border-cacao-800">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm">
+      <div>
+        <p class="font-display text-2xl font-bold text-manteca-50">Lo de Roxana Tortas</p>
+        <p class="text-manteca-200/80 text-xs mt-0.5">Berazategui, Buenos Aires · Encargos con 24 horas de anticipación</p>
+      </div>
+      <div class="text-manteca-200/90 text-xs sm:text-right">
+        <p>WhatsApp de pedidos: <strong>+54 9 11 5504-0475</strong></p>
+        <p class="text-manteca-200/70 mt-0.5">Pastelería artesanal por encargo</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal de vista previa y envío a WhatsApp -->
+  <div id="whatsapp-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-cacao-950/70 backdrop-blur-xs p-4">
+    <div class="bg-manteca-50 border border-tostado-300 rounded-3xl max-w-lg w-full p-6 shadow-xl space-y-4">
+      <div class="flex items-center justify-between border-b border-tostado-200 pb-3">
+        <h3 class="font-display text-2xl font-bold text-cacao-900">Tu mensaje para WhatsApp</h3>
+        <button type="button" onclick="closeWhatsappModal()" aria-label="Cerrar modal" class="p-1.5 rounded-xl bg-tostado-100 hover:bg-tostado-200 text-cacao-800">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <pre id="modal-message-preview" class="p-4 rounded-2xl bg-manteca-100 border border-tostado-200 text-xs text-cacao-900 whitespace-pre-wrap font-sans max-h-64 overflow-y-auto"></pre>
+
+      <div class="flex flex-col sm:flex-row gap-2.5 pt-1">
+        <button
+          type="button"
+          onclick="copyWhatsappMessage()"
+          class="flex-1 py-2.5 px-4 rounded-2xl bg-tostado-100 hover:bg-tostado-200 text-cacao-900 border border-tostado-300 text-xs font-bold transition inline-flex items-center justify-center gap-1.5"
+        >
+          <i data-lucide="copy" class="w-4 h-4"></i>
+          <span id="copy-btn-label">Copiar texto</span>
+        </button>
+        <a
+          id="modal-wa-link"
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex-1 py-2.5 px-4 rounded-2xl bg-cacao-800 hover:bg-cacao-700 text-manteca-50 text-xs font-bold transition inline-flex items-center justify-center gap-1.5 text-center"
+        >
+          <i data-lucide="message-circle" class="w-4 h-4 text-caramelo-400"></i>
+          <span>Abrir WhatsApp (11 5504-0475)</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const ROXANA_WA_NUMBER = '5491155040475';
+
+    function createBrownArtisanFallback(labelText) {
+      const safeLabel = String(labelText || 'Lo de Roxana Tortas').slice(0, 34).replace(/[<>&"]/g, '');
+      const svg = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="600" height="450" viewBox="0 0 600 450">
+          <defs>
+            <linearGradient id="bgBrown" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#f5ece1"/>
+              <stop offset="100%" stop-color="#e6d3bd"/>
+            </linearGradient>
+          </defs>
+          <rect width="600" height="450" fill="url(#bgBrown)"/>
+          <circle cx="300" cy="185" r="78" fill="#8c5834" opacity="0.16"/>
+          <path d="M225 220 Q300 135 375 220 Z" fill="#8c5834" opacity="0.32"/>
+          <rect x="215" y="220" width="170" height="16" rx="8" fill="#59341c" opacity="0.45"/>
+          <text x="300" y="282" text-anchor="middle" font-family="Georgia, serif" font-size="24" font-weight="bold" fill="#271409">Lo de Roxana Tortas</text>
+          <text x="300" y="316" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#59341c">${safeLabel}</text>
+        </svg>
+      `.trim();
+      return 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg);
+    }
+
+    const localPhotoOverrides = {};
+
+    function resolveProductImage(product, variantKey) {
+      const lookupId = variantKey ? `${product.id}__${variantKey}` : `${product.id}__default`;
+      if (localPhotoOverrides[lookupId]) return localPhotoOverrides[lookupId];
+      if (product.variantImages && variantKey && product.variantImages[variantKey]) {
+        return product.variantImages[variantKey];
+      }
+      return product.image;
+    }
+
+    function applySafeImageSource(imgElement, primarySrc, fallbackLabel) {
+      if (!imgElement) return;
+      const fallbackSrc = createBrownArtisanFallback(fallbackLabel);
+      imgElement.onerror = function () {
+        imgElement.onerror = null;
+        imgElement.src = fallbackSrc;
+      };
+      imgElement.src = primarySrc || fallbackSrc;
+    }
+
+    function initFixedHeroImages() {
+      document.querySelectorAll('img[data-fixed-photo]').forEach((img) => {
+        const fileName = img.getAttribute('data-fixed-photo');
+        const label = img.getAttribute('data-fallback-label') || 'Lo de Roxana Tortas';
+        applySafeImageSource(img, fileName, label);
+      });
+    }
+
+    const PRODUCTS = [
+      {
+        id: 'torta-lemon-pie',
+        name: 'LEMON PIE',
+        category: 'Tortas',
+        price: 25000,
+        badge: 'Clásica',
+        image: 'lemonpie.jfif',
+        description: 'Base sableé crocante, crema de limón casera y merengue italiano dorado.'
+      },
+      {
+        id: 'torta-key-lime-pie',
+        name: 'KEY LIME PIE',
+        category: 'Tortas',
+        price: 55000,
+        badge: 'Especial',
+        image: 'keylimepie.jfif',
+        description: 'Intensa crema de lima con base de galletitas y corona de crema chantilly.'
+      },
+      {
+        id: 'torta-cheesecake',
+        name: 'CHEESECAKE',
+        category: 'Tortas',
+        price: 55000,
+        badge: 'Frutos rojos',
+        image: 'cheesecake.jfif',
+        description: 'Cheesecake cremoso horneado con cubierta de frutos rojos y salsa casera.'
+      },
+      {
+        id: 'torta-crumble-manzana',
+        name: 'CRUMBLE DE MANZANA',
+        category: 'Tortas',
+        price: 24000,
+        badge: 'Casera',
+        image: 'crumbledemanzana.jfif',
+        description: 'Manzanas especiadas sobre masa tierna con lluvia dorada de crumble.'
+      },
+      {
+        id: 'torta-ricotta',
+        name: 'RICOTTA',
+        category: 'Tortas',
+        price: 25000,
+        badge: 'Tradicional',
+        image: '14341_2.jpg',
+        description: 'Tarta de ricotta suave y perfumada con azúcar impalpable espolvoreada.'
+      },
+      {
+        id: 'torta-brownie',
+        name: 'TORTA BROWNIE',
+        category: 'Tortas',
+        price: 48000,
+        badge: 'Húmeda',
+        image: 'brownie.jfif',
+        description: 'Base de brownie intenso con dulce de leche, crema batida y rulos de chocolate.',
+        variantLabel: 'Terminación',
+        variants: [
+          {
+            key: 'crema',
+            label: 'Crema batida y rulos de chocolate',
+            price: 48000,
+            description: 'Base de brownie intenso con dulce de leche, crema batida y rulos de chocolate.'
+          },
+          {
+            key: 'merengue',
+            label: 'Merengue italiano',
+            price: 48000,
+            description: 'Base de brownie intenso con dulce de leche y merengue italiano tostado.'
+          }
+        ],
+        variantImages: {
+          crema: 'brownie.jfif',
+          merengue: 'lemonpie.jfif'
+        }
+      },
+      {
+        id: 'torta-strudel',
+        name: 'STRUDEL',
+        category: 'Tortas',
+        price: null,
+        priceLabel: 'Consultar precio',
+        badge: 'Artesanal',
+        image: 'strudel.jfif',
+        description: 'Masa hojaldrada rellena de manzana, pasas y canela con azúcar impalpable.'
+      },
+      {
+        id: 'torta-stollen',
+        name: 'STOLLEN',
+        category: 'Tortas',
+        price: null,
+        priceLabel: 'Consultar precio',
+        badge: 'Especialidad',
+        image: 'stollen.jfif',
+        description: 'Pan dulce festivo especiado con frutas y frutos secos, cubierto de azúcar impalpable.'
+      },
+      {
+        id: 'torta-arena-limon',
+        name: 'TORTA ARENA DE LIMON',
+        category: 'Tortas',
+        price: 26000,
+        badge: 'Glaseada',
+        image: '25067.jpg',
+        description: 'Bizcocho tierno y perfumado a limón con glaseado cítrico brillante.'
+      },
+      {
+        id: 'torta-chocotorta',
+        name: 'TORTA CHOCOTORTA',
+        category: 'Tortas',
+        price: 55000,
+        badge: 'Clásica argentina',
+        image: 'chocotorta.jfif',
+        description: 'Capas de galletitas de chocolate humedecidas, crema de dulce de leche y cacao.'
+      },
+      {
+        id: 'torta-frutilla',
+        name: 'TORTA DE FRUTILLA',
+        category: 'Tortas',
+        price: 42000,
+        badge: 'Fresca',
+        image: 'tortadefrutilla.jfif',
+        description: 'Masa dulce, crema suave y abundante corona de frutillas frescas laminadas.'
+      },
+      {
+        id: 'torta-rogel-artesanal',
+        name: 'TORTA ROGEL',
+        category: 'Tortas',
+        price: 38000,
+        badge: 'Dulce de leche',
+        image: '14341_2.jpg',
+        description: 'Capas finas y crocantes alternadas con abundante dulce de leche repostero.'
+      },
+      {
+        id: 'mini-brownie-frutos-rojos',
+        name: 'MINI BROWNIE DE FRUTOS ROJOS',
+        category: 'Minis',
+        price: 10500,
+        badge: 'Mini',
+        image: 'minibrowniedefrutosrojos.jfif',
+        description: 'Porción individual de brownie con dulce de leche, crema y frutos rojos.'
+      },
+      {
+        id: 'mini-cheesecake',
+        name: 'MINI CHEESECAKE',
+        category: 'Minis',
+        price: 10500,
+        badge: 'Mini',
+        image: 'minicheesecake.jfif',
+        description: 'Mini cheesecake cremoso coronado con frutos rojos y salsa casera.'
+      },
+      {
+        id: 'mini-key-lime-pie',
+        name: 'MINI KEY LIME PIE',
+        category: 'Minis',
+        price: 9800,
+        badge: 'Mini',
+        image: 'minikeylimepie.jfif',
+        description: 'Versión individual de key lime pie con crema de lima y chantilly.'
+      },
+      {
+        id: 'mini-brownie',
+        name: 'MINI BROWNIE',
+        category: 'Minis',
+        price: 9500,
+        badge: 'Mini',
+        image: 'mini brownie.jfif',
+        description: 'Mini brownie con dulce de leche y crema batida con rulos de chocolate.',
+        variantLabel: 'Terminación',
+        variants: [
+          {
+            key: 'crema',
+            label: 'Crema batida y rulos de chocolate',
+            price: 9500,
+            description: 'Mini brownie con dulce de leche y crema batida con rulos de chocolate.'
+          },
+          {
+            key: 'merengue',
+            label: 'Merengue italiano',
+            price: 9500,
+            description: 'Mini brownie con dulce de leche y merengue italiano dorado.'
+          }
+        ],
+        variantImages: {
+          crema: 'mini brownie.jfif',
+          merengue: 'lemonpie.jfif'
+        }
+      },
+      {
+        id: 'mini-lemon-pie',
+        name: 'MINI LEMON PIE',
+        category: 'Minis',
+        price: 8800,
+        badge: 'Mini',
+        image: 'lemonpie.jfif',
+        description: 'Porción mini de lemon pie con crema cítrica y merengue italiano.'
+      },
+      {
+        id: 'mini-frutilla',
+        name: 'MINI TORTA DE FRUTILLA',
+        category: 'Minis',
+        price: 9500,
+        badge: 'Mini',
+        image: 'tortadefrutilla.jfif',
+        description: 'Mini tarta con crema pastelera/chantilly y frutillas frescas.'
+      },
+      {
+        id: 'box-1',
+        name: 'BOX 1',
+        category: 'Boxes',
+        price: 26000,
+        badge: 'Desayuno / Merienda',
+        image: 'box1.jfif',
+        description: 'Box surtido con mini tarta, alfajorcitos, scones rellenos, bolsita dulce, jugo y café.'
+      },
+      {
+        id: 'box-2',
+        name: 'BOX 2',
+        category: 'Boxes',
+        price: 24500,
+        badge: 'Dulce y salado',
+        image: 'box2.jfif',
+        description: 'Box con mini brownie de frutos rojos, sándwiches hojaldrados y alfajorcitos.'
+      },
+      {
+        id: 'box-3',
+        name: 'BOX 3',
+        category: 'Boxes',
+        price: 22000,
+        badge: 'Alfajorcitos',
+        image: '29297.jpg',
+        description: 'Caja selección de alfajorcitos de maicena, pistacho y de corte clásico.'
+      },
+      {
+        id: 'box-4',
+        name: 'BOX 4',
+        category: 'Boxes',
+        price: 29500,
+        badge: 'Completo',
+        image: 'box4.jfif',
+        description: 'Box completo con mini cheesecake de frutos rojos, sándwiches, alfajorcitos, cuadrados y jugo.'
+      },
+      {
+        id: 'box-5-alfajorcitos',
+        name: 'BOX 5 ALFAJORCITOS',
+        category: 'Boxes',
+        price: 27000,
+        badge: '4 de cada variedad',
+        image: 'box5.jfif',
+        description: 'Alfajores surtidos: hay cuatro de cada uno (pistacho, nuez, maicena y clásico).'
+      },
+      {
+        id: 'box-cuadraditos-limon',
+        name: 'CUADRADITOS DE LIMÓN',
+        category: 'Boxes',
+        price: 16000,
+        badge: 'Box x6',
+        image: 'cuadraditosdelimon.jfif',
+        description: 'Caja de 6 cuadraditos húmedos de limón con glaseado cítrico y ralladura.'
+      },
+      {
+        id: 'alfajorcitos-nuez',
+        name: 'ALFAJORCITOS DE NUEZ',
+        category: 'Alfajores',
+        price: 11000,
+        badge: 'Con nuez',
+        image: 'alfajorcitosnuez.jfif',
+        description: 'Tapas tiernas rellenas con dulce de leche y coronadas con media nuez.'
+      },
+      {
+        id: 'alfajorcitos-maicena',
+        name: 'ALFAJORCITOS DE MAIZENA',
+        category: 'Alfajores',
+        price: 9500,
+        badge: 'Con coco',
+        image: 'alfajorcitosdemaicena.jfif',
+        description: 'Clásicos alfajorcitos de maicena rellenos de dulce de leche y borde de coco.'
+      },
+      {
+        id: 'alfajorcitos-nube',
+        name: 'ALFAJORCITOS NUBE',
+        category: 'Alfajores',
+        price: 10500,
+        badge: 'Suaves',
+        image: 'alfajorcitosnube.jfif',
+        description: 'Alfajorcitos delicados rellenos de dulce de leche espolvoreados con azúcar impalpable.'
+      },
+      {
+        id: 'alfajorcitos-pistacho',
+        name: 'ALFAJORCITOS PISTACHO',
+        category: 'Alfajores',
+        price: 12500,
+        badge: 'Pistacho',
+        image: 'alfjorcitosdepistacho.jfif',
+        description: 'Tapas suaves con abundante relleno cremoso de pistacho y azúcar impalpable.'
+      },
+      {
+        id: 'kreppels',
+        name: 'KREPPELS',
+        category: 'Alfajores',
+        price: 9500,
+        badge: 'Tradicional',
+        image: 'kreppels.jfif',
+        description: 'Clásicos kreppels fritos dorados y livianos espolvoreados con azúcar impalpable.'
+      },
+      {
+        id: 'galletitas-queso',
+        name: 'GALLETITAS DE QUESO',
+        category: 'Alfajores',
+        price: 9000,
+        badge: 'EL CUARTO',
+        image: 'galletitasdequeso.jfif',
+        description: 'Galletitas suaves, livianas y crujientes de queso (rajaditas de queso).'
+      },
+      {
+        id: 'scones-clasicos',
+        name: 'SCONES',
+        category: 'Scones',
+        price: 10000,
+        badge: 'Clásicos',
+        image: 'sconesrellenos.jfif',
+        description: 'Scones caseros tiernos y dorados, ideales para acompañar el mate o el té.'
+      },
+      {
+        id: 'scones-rellenos-x6',
+        name: 'SCONES RELLENOS (X6)',
+        category: 'Scones',
+        price: 14500,
+        badge: 'Pack x6 rellenos',
+        image: 'sconesrellenos.jfif',
+        description: 'Caja de 6 scones rellenos con jamón cocido y queso de máquina.',
+        variantLabel: 'Elegí el relleno',
+        variants: [
+          {
+            key: 'jyq',
+            label: 'Jamón y queso (JyQ)',
+            price: 14500,
+            description: 'Caja de 6 scones rellenos con jamón cocido y queso de máquina.'
+          },
+          {
+            key: 'jcrudo-q',
+            label: 'Jamón crudo y queso',
+            price: 16500,
+            description: 'Caja de 6 scones rellenos con jamón crudo seleccionado y queso.'
+          },
+          {
+            key: 'caprese',
+            label: 'Caprese (tomate, mozzarella y albahaca)',
+            price: 15500,
+            description: 'Caja de 6 scones rellenos estilo caprese con queso, tomate y albahaca.'
+          },
+          {
+            key: 'jamon-crudo',
+            label: 'Jamón crudo',
+            price: 16000,
+            description: 'Caja de 6 scones rellenos con jamón crudo.'
+          }
+        ],
+        variantImages: {
+          jyq: 'sconesrellenos.jfif',
+          'jcrudo-q': 'sconesrellenos.jfif',
+          caprese: 'sconesrellenos.jfif',
+          'jamon-crudo': 'sconesrellenos.jfif'
+        }
+      },
+      {
+        id: 'cookie-nutella',
+        name: 'COOKIE NUTELLA',
+        category: 'Cookies',
+        price: 4500,
+        badge: 'Cookie',
+        image: 'cookiedenutella.jfif',
+        description: 'Cookie artesanal de textura tierna por dentro y bordes dorados con corazón de Nutella.'
+      },
+      {
+        id: 'cookie-chips',
+        name: 'COOKIE CHIPS',
+        category: 'Cookies',
+        price: 4500,
+        badge: 'Cookie',
+        image: 'cookiechips.jfif',
+        description: 'Cookie casera cargada de chips de chocolate semiamargo.'
+      },
+      {
+        id: 'cookie-chips-y-nuez',
+        name: 'COOKIE CHIPS Y NUEZ',
+        category: 'Cookies',
+        price: 4500,
+        badge: 'Cookie',
+        image: 'cookiechipsynueces.jfif',
+        description: 'Cookie artesanal con chips de chocolate y trozos crocantes de nuez.'
+      },
+      {
+        id: 'cookie-red-velvet',
+        name: 'COOKIE RED VELVET',
+        category: 'Cookies',
+        price: 4500,
+        badge: 'Cookie',
+        image: 'cookieredvelvet.jfif',
+        description: 'Cookie Red Velvet con suave toque de cacao y chips de chocolate blanco.'
+      },
+      {
+        id: 'cookie-pistacho',
+        name: 'COOKIE PISTACHO',
+        category: 'Cookies',
+        price: 4500,
+        badge: 'Cookie',
+        image: 'cookiepistacho.jfif',
+        description: 'Cookie artesanal con crema y toque de pistacho.'
+      }
+    ];
+
+    const state = {
+      category: 'todos',
+      search: '',
+      cart: [],
+      selectedDateStr: null,
+      timeSlot: 'Turno Mañana (10:00 a 13:00 hs)',
+      deliveryMethod: 'retiro',
+      currentMonth: null,
+      packMode: 'bloques',
+      packItems: [
+        { flavor: 'Clásicos', qty: 6 },
+        { flavor: 'JyQ', qty: 0 },
+        { flavor: 'Caprese', qty: 0 }
+      ]
+    };
+
+    const selectedVariantByProduct = {};
+    PRODUCTS.forEach((p) => {
+      if (p.variants && p.variants.length > 0) {
+        selectedVariantByProduct[p.id] = p.variants[0].key;
+      }
+    });
+
+    function formatMoney(amount) {
+      return '$' + Number(amount || 0).toLocaleString('es-AR');
+    }
+
+    function getProductActiveInfo(product) {
+      if (!product.variants || product.variants.length === 0) {
+        return {
+          variantKey: null,
+          variantLabel: null,
+          price: product.price,
+          priceLabel: product.priceLabel || formatMoney(product.price),
+          description: product.description,
+          image: resolveProductImage(product, null)
+        };
+      }
+      const key = selectedVariantByProduct[product.id] || product.variants[0].key;
+      const variant = product.variants.find((v) => v.key === key) || product.variants[0];
+      return {
+        variantKey: variant.key,
+        variantLabel: variant.label,
+        price: variant.price,
+        priceLabel: formatMoney(variant.price),
+        description: variant.description || product.description,
+        image: resolveProductImage(product, variant.key)
+      };
+    }
+
+    function getMinimumAllowedDate() {
+      const now = new Date();
+      const plus24h = new Date(now.getTime() + 24 * 60 * 60 * 1000);
+      const todayMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      const tomorrowMidnight = new Date(todayMidnight.getFullYear(), todayMidnight.getMonth(), todayMidnight.getDate() + 1);
+      const candidateMidnight = new Date(plus24h.getFullYear(), plus24h.getMonth(), plus24h.getDate());
+      return candidateMidnight > tomorrowMidnight ? candidateMidnight : tomorrowMidnight;
+    }
+
+    function toDateKey(dateObj) {
+      const y = dateObj.getFullYear();
+      const m = String(dateObj.getMonth() + 1).padStart(2, '0');
+      const d = String(dateObj.getDate()).padStart(2, '0');
+      return `${y}-${m}-${d}`;
+    }
+
+    function formatDateHuman(dateKey) {
+      if (!dateKey) return 'Sin fecha seleccionada';
+      const [y, m, d] = dateKey.split('-').map(Number);
+      const dt = new Date(y, m - 1, d);
+      return dt.toLocaleDateString('es-AR', {
+        weekday: 'long',
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric'
+      });
+    }
+
+    function selectCategory(category) {
+      state.category = category;
+      document.querySelectorAll('.cat-filter-btn').forEach((btn) => {
+        const active = btn.getAttribute('data-cat-btn') === category;
+        btn.className = active
+          ? 'cat-filter-btn px-4 py-2 rounded-2xl text-sm font-semibold bg-cacao-800 text-manteca-50 shadow-sm transition'
+          : 'cat-filter-btn px-4 py-2 rounded-2xl text-sm font-semibold bg-manteca-50 hover:bg-tostado-100 text-cacao-800 border border-tostado-200 transition';
+      });
+      document.querySelectorAll('.nav-pill').forEach((pill) => {
+        const active = pill.getAttribute('data-nav-cat') === category;
+        pill.className = active
+          ? 'nav-pill px-3.5 py-1.5 rounded-full bg-cacao-800 text-manteca-50 whitespace-nowrap'
+          : 'nav-pill px-3.5 py-1.5 rounded-full bg-tostado-100 text-cacao-800 whitespace-nowrap';
+      });
+      renderProducts();
+    }
+
+    function handleSearch(val) {
+      state.search = String(val || '').trim().toLowerCase();
+      renderProducts();
+    }
+
+    function resetFilters() {
+      state.category = 'todos';
+      state.search = '';
+      const input = document.getElementById('search-input');
+      if (input) input.value = '';
+      selectCategory('todos');
+    }
+
+    function handleVariantChange(productId, newVariantKey) {
+      selectedVariantByProduct[productId] = newVariantKey;
+      const product = PRODUCTS.find((p) => p.id === productId);
+      if (!product) return;
+      const info = getProductActiveInfo(product);
+
+      const descEl = document.getElementById(`desc-${productId}`);
+      const priceEl = document.getElementById(`price-${productId}`);
+      const imgEl = document.getElementById(`img-${productId}`);
+
+      if (descEl) descEl.textContent = info.description;
+      if (priceEl) priceEl.textContent = info.priceLabel;
+      if (imgEl) applySafeImageSource(imgEl, info.image, `${product.name} · ${info.variantLabel || ''}`);
+    }
+
+    function handleLocalPhotoUpload(productId, fileInput) {
+      const file = fileInput && fileInput.files && fileInput.files[0];
+      if (!file) return;
+      const product = PRODUCTS.find((p) => p.id === productId);
+      const activeKey = selectedVariantByProduct[productId] || null;
+      const reader = new FileReader();
+      reader.onload = function (ev) {
+        if (!ev.target || !ev.target.result) return;
+        const storeKey = activeKey ? `${productId}__${activeKey}` : `${productId}__default`;
+        localPhotoOverrides[storeKey] = ev.target.result;
+        const imgEl = document.getElementById(`img-${productId}`);
+        if (imgEl && product) {
+          applySafeImageSource(imgEl, ev.target.result, product.name);
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function renderProducts() {
+      const grid = document.getElementById('products-grid');
+      const emptyBox = document.getElementById('empty-catalog');
+      const countLabel = document.getElementById('catalog-count');
+      if (!grid) return;
+
+      const filtered = PRODUCTS.filter((p) => {
+        const matchesCat = state.category === 'todos' || p.category === state.category;
+        if (!matchesCat) return false;
+        if (!state.search) return true;
+        const haystack = [
+          p.name,
+          p.category,
+          p.description,
+          p.badge || '',
+          ...(p.variants ? p.variants.map((v) => v.label) : [])
+        ].join(' ').toLowerCase();
+        return haystack.includes(state.search);
+      });
+
+      if (countLabel) {
+        countLabel.textContent = `Mostrando ${filtered.length} de ${PRODUCTS.length} productos`;
+      }
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '';
+        if (emptyBox) emptyBox.classList.remove('hidden');
+        return;
+      }
+
+      if (emptyBox) emptyBox.classList.add('hidden');
+
+      grid.innerHTML = filtered.map((product) => {
+        const info = getProductActiveInfo(product);
+        const variantSelectorHtml = product.variants && product.variants.length > 0
+          ? `
+            <div class="mt-3">
+              <label for="select-${product.id}" class="block text-[11px] font-bold uppercase tracking-wide text-cacao-600 mb-1">
+                ${product.variantLabel || 'Opción'}
+              </label>
+              <select
+                id="select-${product.id}"
+                onchange="handleVariantChange('${product.id}', this.value)"
+                class="w-full px-3 py-2 rounded-xl bg-manteca-100 border border-tostado-300 text-xs font-semibold text-cacao-900 focus:outline-none focus:border-cacao-600"
+              >
+                ${product.variants.map((v) => `
+                  <option value="${v.key}" ${v.key === info.variantKey ? 'selected' : ''}>${v.label}</option>
+                `).join('')}
+              </select>
+            </div>
+          `
+          : '';
+
+        return `
+          <article class="rounded-3xl bg-manteca-50 border border-tostado-200 overflow-hidden shadow-sm hover:shadow-md transition flex flex-col justify-between">
+            <div>
+              <div class="relative aspect-[4/3] bg-tostado-100 overflow-hidden">
+                <img
+                  id="img-${product.id}"
+                  alt="${product.name}"
+                  class="w-full h-full object-cover"
+                />
+                <span class="absolute top-3 left-3 px-2.5 py-1 rounded-xl bg-cacao-900/85 text-manteca-50 text-[11px] font-semibold">
+                  ${product.category}
+                </span>
+                ${product.badge ? `
+                  <span class="absolute top-3 right-3 px-2.5 py-1 rounded-xl bg-manteca-50/95 text-cacao-800 border border-tostado-200 text-[11px] font-bold">
+                    ${product.badge}
+                  </span>
+                ` : ''}
+                <label
+                  title="Probar foto desde tu dispositivo"
+                  class="absolute bottom-2.5 right-2.5 px-2.5 py-1.5 rounded-xl bg-manteca-50/90 hover:bg-manteca-50 text-cacao-800 border border-tostado-200 text-[11px] font-semibold cursor-pointer shadow-xs inline-flex items-center gap-1 transition"
+                >
+                  <i data-lucide="camera" class="w-3.5 h-3.5 text-caramelo-600"></i>
+                  <span>Probar foto</span>
+                  <input type="file" accept="image/*" class="hidden" onchange="handleLocalPhotoUpload('${product.id}', this)" />
+                </label>
+              </div>
+
+              <div class="p-5">
+                <div class="flex items-start justify-between gap-2">
+                  <h3 class="font-display text-2xl font-bold text-cacao-900 leading-tight">
+                    ${product.name}
+                  </h3>
+                  <span id="price-${product.id}" class="text-base sm:text-lg font-bold text-cacao-800 whitespace-nowrap">
+                    ${info.priceLabel}
+                  </span>
+                </div>
+
+                <p id="desc-${product.id}" class="text-xs sm:text-sm text-cacao-600 mt-2 leading-relaxed">
+                  ${info.description}
+                </p>
+
+                ${variantSelectorHtml}
+              </div>
+            </div>
+
+            <div class="px-5 pb-5 pt-2">
+              <button
+                type="button"
+                onclick="addCatalogProductToCart('${product.id}')"
+                class="w-full py-2.5 px-4 rounded-2xl bg-cacao-800 hover:bg-cacao-700 text-manteca-50 text-xs sm:text-sm font-semibold transition inline-flex items-center justify-center gap-2"
+              >
+                <i data-lucide="plus" class="w-4 h-4 text-caramelo-400"></i>
+                <span>Agregar al pedido</span>
+              </button>
+            </div>
+          </article>
+        `;
+      }).join('');
+
+      filtered.forEach((product) => {
+        const info = getProductActiveInfo(product);
+        const imgEl = document.getElementById(`img-${product.id}`);
+        applySafeImageSource(imgEl, info.image, `${product.name} · Lo de Roxana`);
+      });
+
+      lucide.createIcons();
+    }
+
+    const PACK_FLAVOR_SURCHARGES = {
+      'Clásicos': 0,
+      'JyQ': 750,
+      'Caprese': 900
+    };
+
+    function setPackMode(mode) {
+      state.packMode = mode;
+      const btnBloques = document.getElementById('pack-mode-bloques');
+      const btnUnidad = document.getElementById('pack-mode-unidad');
+      if (btnBloques && btnUnidad) {
+        if (mode === 'bloques') {
+          btnBloques.className = 'px-3.5 py-2 rounded-xl text-xs font-bold bg-cacao-800 text-manteca-50 transition';
+          btnUnidad.className = 'px-3.5 py-2 rounded-xl text-xs font-bold bg-tostado-100 text-cacao-800 border border-tostado-200 transition';
+        } else {
+          btnUnidad.className = 'px-3.5 py-2 rounded-xl text-xs font-bold bg-cacao-800 text-manteca-50 transition';
+          btnBloques.className = 'px-3.5 py-2 rounded-xl text-xs font-bold bg-tostado-100 text-cacao-800 border border-tostado-200 transition';
+        }
+      }
+      renderPackBuilder();
+    }
+
+    function adjustPackFlavor(index, delta) {
+      const currentTotal = state.packItems.reduce((acc, item) => acc + item.qty, 0);
+      const item = state.packItems[index];
+      if (!item) return;
+
+      if (delta > 0) {
+        const step = Math.min(delta, 6 - currentTotal);
+        item.qty += step;
+      } else if (delta < 0) {
+        item.qty = Math.max(0, item.qty + delta);
+      }
+      renderPackBuilder();
+    }
+
+    function resetPackBuilder() {
+      state.packItems = [
+        { flavor: 'Clásicos', qty: 6 },
+        { flavor: 'JyQ', qty: 0 },
+        { flavor: 'Caprese', qty: 0 }
+      ];
+      renderPackBuilder();
+    }
+
+    function calculatePackTotal(items) {
+      const totalQty = items.reduce((sum, it) => sum + it.qty, 0);
+      if (totalQty === 0) return 0;
+      const basePackPrice = 10000;
+      const perUnitFactor = totalQty / 6;
+      const extras = items.reduce((sum, it) => sum + (it.qty * (PACK_FLAVOR_SURCHARGES[it.flavor] || 0)), 0);
+      return Math.round(basePackPrice * perUnitFactor + extras);
+    }
+
+    function renderPackBuilder() {
+      const rowsContainer = document.getElementById('pack-builder-rows');
+      const totalCountEl = document.getElementById('pack-total-count');
+      const summaryDetailEl = document.getElementById('pack-summary-detail');
+      const priceEl = document.getElementById('pack-calculated-price');
+      const statusPill = document.getElementById('pack-status-pill');
+      const validationMsg = document.getElementById('pack-validation-msg');
+      const addBtn = document.getElementById('add-pack-btn');
+      if (!rowsContainer) return;
+
+      const totalQty = state.packItems.reduce((sum, it) => sum + it.qty, 0);
+      const totalPrice = calculatePackTotal(state.packItems);
+      const stepButtons = state.packMode === 'bloques' ? [2, 3, 6] : [1];
+
+      if (totalCountEl) totalCountEl.textContent = `${totalQty} / 6`;
+
+      rowsContainer.innerHTML = state.packItems.map((item, idx) => `
+        <div class="p-3.5 rounded-2xl bg-manteca-100 border border-tostado-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <p class="text-sm font-bold text-cacao-900">Scones ${item.flavor}</p>
+            <p class="text-[11px] text-cacao-600">
+              ${PACK_FLAVOR_SURCHARGES[item.flavor] > 0 ? `+${formatMoney(PACK_FLAVOR_SURCHARGES[item.flavor])} por unidad` : 'Base clásica incluida'}
+            </p>
+          </div>
+          <div class="flex items-center gap-2 flex-wrap">
+            <button
+              type="button"
+              onclick="adjustPackFlavor(${idx}, ${state.packMode === 'bloques' ? -2 : -1})"
+              class="px-2.5 py-1.5 rounded-xl bg-manteca-50 hover:bg-tostado-200 border border-tostado-300 text-xs font-bold text-cacao-900 transition"
+            >
+              -${state.packMode === 'bloques' ? 2 : 1}
+            </button>
+            <span class="px-3 py-1 rounded-xl bg-cacao-800 text-manteca-50 text-xs font-bold min-w-[46px] text-center">
+              ${item.qty} ud
+            </span>
+            ${stepButtons.map((st) => `
+              <button
+                type="button"
+                onclick="adjustPackFlavor(${idx}, ${st})"
+                ${totalQty >= 6 ? 'disabled' : ''}
+                class="px-2.5 py-1.5 rounded-xl bg-manteca-50 hover:bg-tostado-200 disabled:opacity-40 border border-tostado-300 text-xs font-bold text-cacao-900 transition"
+              >
+                +${st}
+              </button>
+            `).join('')}
+          </div>
+        </div>
+      `).join('');
+
+      if (summaryDetailEl) {
+        const activeLines = state.packItems.filter((it) => it.qty > 0);
+        summaryDetailEl.innerHTML = activeLines.length > 0
+          ? activeLines.map((it) => `<div class="flex justify-between"><span>• ${it.flavor}</span><span class="font-bold">${it.qty} scones</span></div>`).join('')
+          : '<p class="text-cacao-500 italic">Todavía no sumaste scones al pack.</p>';
+      }
+
+      if (priceEl) priceEl.textContent = formatMoney(totalPrice);
+
+      const isValid = totalQty === 6;
+      if (statusPill) {
+        statusPill.textContent = isValid ? 'Pack completo (6/6)' : `${totalQty}/6 scones`;
+        statusPill.className = isValid
+          ? 'px-2.5 py-1 rounded-full text-[11px] font-bold bg-cacao-800 text-manteca-50'
+          : 'px-2.5 py-1 rounded-full text-[11px] font-bold bg-tostado-200 text-cacao-900';
+      }
+
+      if (validationMsg) {
+        if (!isValid) {
+          validationMsg.textContent = totalQty < 6
+            ? `Completá ${6 - totalQty} scone(s) más para cerrar el pack de 6.`
+            : 'El pack admite hasta 6 scones en total.';
+          validationMsg.classList.remove('hidden');
+        } else {
+          validationMsg.classList.add('hidden');
+        }
+      }
+
+      if (addBtn) addBtn.disabled = !isValid;
+    }
+
+    function addCustomPackToCart() {
+      const totalQty = state.packItems.reduce((sum, it) => sum + it.qty, 0);
+      if (totalQty !== 6) return;
+      const price = calculatePackTotal(state.packItems);
+      const breakdown = state.packItems
+        .filter((it) => it.qty > 0)
+        .map((it) => `${it.qty} ${it.flavor}`)
+        .join(', ');
+
+      addToCart({
+        id: `pack-scones-${breakdown}`,
+        name: 'PACK DE SCONES (X6)',
+        variant: breakdown,
+        price: price,
+        image: 'sconesrellenos.jfif'
+      });
+    }
+
+    function initCalendar() {
+      const minDate = getMinimumAllowedDate();
+      state.selectedDateStr = toDateKey(minDate);
+      state.currentMonth = new Date(minDate.getFullYear(), minDate.getMonth(), 1);
+
+      const banner = document.getElementById('min-date-banner');
+      const subtitle = document.getElementById('calendar-rule-subtitle');
+      const humanMin = minDate.toLocaleDateString('es-AR', { weekday: 'short', day: 'numeric', month: 'short' });
+
+      if (banner) banner.textContent = `Primera fecha disponible: ${humanMin}`;
+      if (subtitle) {
+        subtitle.textContent = `Mínimo 24 hs de anticipación · Disponible desde ${formatDateHuman(state.selectedDateStr)}.`;
+      }
+
+      renderCalendar();
+    }
+
+    function changeMonth(offset) {
+      if (!state.currentMonth) return;
+      state.currentMonth = new Date(
+        state.currentMonth.getFullYear(),
+        state.currentMonth.getMonth() + offset,
+        1
+      );
+      renderCalendar();
+    }
+
+    function selectCalendarDate(dateKey) {
+      const minKey = toDateKey(getMinimumAllowedDate());
+      if (dateKey < minKey) return;
+      state.selectedDateStr = dateKey;
+      renderCalendar();
+    }
+
+    function renderCalendar() {
+      const grid = document.getElementById('calendar-days-grid');
+      const monthLabel = document.getElementById('calendar-month-label');
+      const readout = document.getElementById('selected-date-readout');
+      if (!grid || !state.currentMonth) return;
+
+      const year = state.currentMonth.getFullYear();
+      const month = state.currentMonth.getMonth();
+      const minDate = getMinimumAllowedDate();
+      const minKey = toDateKey(minDate);
+
+      if (monthLabel) {
+        const label = state.currentMonth.toLocaleDateString('es-AR', { month: 'long', year: 'numeric' });
+        monthLabel.textContent = label.charAt(0).toUpperCase() + label.slice(1);
+      }
+
+      const firstDay = new Date(year, month, 1);
+      const startWeekday = (firstDay.getDay() + 6) % 7;
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+      const cells = [];
+      for (let i = 0; i < startWeekday; i++) {
+        cells.push('<div class="h-10 rounded-xl"></div>');
+      }
+
+      for (let day = 1; day <= daysInMonth; day++) {
+        const dt = new Date(year, month, day);
+        const key = toDateKey(dt);
+        const isBlocked = key < minKey;
+        const isSelected = key === state.selectedDateStr;
+
+        if (isBlocked) {
+          cells.push(`
+            <button
+              type="button"
+              disabled
+              aria-disabled="true"
+              title="Requiere al menos 24 horas de anticipación"
+              class="h-10 rounded-xl bg-tostado-200/45 text-cacao-400 text-xs font-medium cursor-not-allowed line-through"
+            >
+              ${day}
+            </button>
+          `);
+        } else {
+          cells.push(`
+            <button
+              type="button"
+              onclick="selectCalendarDate('${key}')"
+              class="h-10 rounded-xl text-xs font-bold transition ${
+                isSelected
+                  ? 'bg-cacao-800 text-manteca-50 shadow-sm ring-2 ring-caramelo-400'
+                  : 'bg-tostado-100 hover:bg-tostado-200 text-cacao-900 border border-tostado-200'
+              }"
+            >
+              ${day}
+            </button>
+          `);
+        }
+      }
+
+      grid.innerHTML = cells.join('');
+      if (readout) {
+        readout.textContent = `Fecha elegida: ${formatDateHuman(state.selectedDateStr)}`;
+      }
+    }
+
+    function addCatalogProductToCart(productId) {
+      const product = PRODUCTS.find((p) => p.id === productId);
+      if (!product) return;
+      const info = getProductActiveInfo(product);
+
+      addToCart({
+        id: `${product.id}__${info.variantKey || 'default'}`,
+        name: product.name,
+        variant: info.variantLabel || null,
+        price: info.price,
+        priceLabel: info.priceLabel,
+        image: info.image
+      });
+    }
+
+    function addToCart(item) {
+      const existing = state.cart.find((c) => c.id === item.id);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        state.cart.push({ ...item, qty: 1 });
+      }
+      renderCart();
+      showFeedback(`Agregaste "${item.name}"${item.variant ? ` (${item.variant})` : ''} al pedido.`);
+    }
+
+    function updateCartQty(index, delta) {
+      const item = state.cart[index];
+      if (!item) return;
+      item.qty += delta;
+      if (item.qty <= 0) {
+        state.cart.splice(index, 1);
+      }
+      renderCart();
+    }
+
+    function clearCart() {
+      state.cart = [];
+      renderCart();
+    }
+
+    function setDeliveryMethod(method) {
+      state.deliveryMethod = method;
+      const btnRetiro = document.getElementById('btn-method-retiro');
+      const btnEnvio = document.getElementById('btn-method-envio');
+      const addrWrap = document.getElementById('address-field-wrap');
+
+      if (method === 'retiro') {
+        btnRetiro.className = 'py-2.5 px-3 rounded-2xl text-xs font-bold bg-cacao-800 text-manteca-50 transition';
+        btnEnvio.className = 'py-2.5 px-3 rounded-2xl text-xs font-bold bg-tostado-100 text-cacao-800 border border-tostado-200 transition';
+        if (addrWrap) addrWrap.classList.add('hidden');
+      } else {
+        btnEnvio.className = 'py-2.5 px-3 rounded-2xl text-xs font-bold bg-cacao-800 text-manteca-50 transition';
+        btnRetiro.className = 'py-2.5 px-3 rounded-2xl text-xs font-bold bg-tostado-100 text-cacao-800 border border-tostado-200 transition';
+        if (addrWrap) addrWrap.classList.remove('hidden');
+      }
+    }
+
+    function showFeedback(text) {
+      const box = document.getElementById('checkout-feedback');
+      if (!box) return;
+      box.textContent = text;
+      box.classList.remove('hidden');
+    }
+
+    function renderCart() {
+      const badge = document.getElementById('header-cart-badge');
+      const list = document.getElementById('cart-items-list');
+      const subtotalEl = document.getElementById('cart-subtotal');
+      const consultNote = document.getElementById('cart-consult-note');
+
+      const totalUnits = state.cart.reduce((sum, it) => sum + it.qty, 0);
+      if (badge) badge.textContent = String(totalUnits);
+
+      if (!list) return;
+
+      if (state.cart.length === 0) {
+        list.innerHTML = `
+          <div class="text-center py-8 px-4 rounded-2xl bg-manteca-100 border border-tostado-200">
+            <i data-lucide="shopping-bag" class="w-8 h-8 text-cacao-400 mx-auto mb-2"></i>
+            <p class="text-xs sm:text-sm font-semibold text-cacao-800">Tu pedido todavía está vacío</p>
+            <p class="text-xs text-cacao-600 mt-0.5">Elegí tortas, minis, boxes, alfajores, scones o cookies del catálogo.</p>
+          </div>
+        `;
+        if (subtotalEl) subtotalEl.textContent = '$0';
+        if (consultNote) consultNote.classList.add('hidden');
+        lucide.createIcons();
+        return;
+      }
+
+      let subtotal = 0;
+      let hasConsultItems = false;
+
+      list.innerHTML = state.cart.map((item, idx) => {
+        const hasNumericPrice = typeof item.price === 'number' && !Number.isNaN(item.price);
+        if (hasNumericPrice) {
+          subtotal += item.price * item.qty;
+        } else {
+          hasConsultItems = true;
+        }
+
+        const lineTotalLabel = hasNumericPrice
+          ? formatMoney(item.price * item.qty)
+          : 'Consultar precio';
+
+        return `
+          <div class="p-3 rounded-2xl bg-manteca-100 border border-tostado-200 flex items-center justify-between gap-3">
+            <div class="min-w-0">
+              <p class="text-xs sm:text-sm font-bold text-cacao-900 truncate">${item.name}</p>
+              ${item.variant ? `<p class="text-[11px] text-cacao-600 truncate">${item.variant}</p>` : ''}
+              <p class="text-xs font-semibold text-cacao-700 mt-0.5">${lineTotalLabel}</p>
+            </div>
+            <div class="flex items-center gap-1.5 shrink-0">
+              <button type="button" onclick="updateCartQty(${idx}, -1)" aria-label="Restar unidad" class="w-7 h-7 rounded-lg bg-manteca-50 hover:bg-tostado-200 border border-tostado-300 text-cacao-900 font-bold text-xs flex items-center justify-center">
+                -
+              </button>
+              <span class="w-6 text-center text-xs font-bold text-cacao-900">${item.qty}</span>
+              <button type="button" onclick="updateCartQty(${idx}, 1)" aria-label="Sumar unidad" class="w-7 h-7 rounded-lg bg-manteca-50 hover:bg-tostado-200 border border-tostado-300 text-cacao-900 font-bold text-xs flex items-center justify-center">
+                +
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      if (subtotalEl) subtotalEl.textContent = formatMoney(subtotal);
+      if (consultNote) {
+        consultNote.classList.toggle('hidden', !hasConsultItems);
+      }
+      lucide.createIcons();
+    }
+
+    function buildWhatsappOrderMessage() {
+      const name = (document.getElementById('customer-name')?.value || '').trim() || 'Cliente';
+      const phone = (document.getElementById('customer-phone')?.value || '').trim();
+      const address = (document.getElementById('customer-address')?.value || '').trim();
+      const notes = (document.getElementById('customer-notes')?.value || '').trim();
+
+      const lines = [
+        'Hola Roxana! Quiero hacer un pedido en *Lo de Roxana Tortas* (Berazategui):',
+        '',
+        `*Nombre:* ${name}`
+      ];
+
+      if (phone) lines.push(`*Teléfono:* ${phone}`);
+      lines.push(`*Fecha solicitada (+24 hs):* ${formatDateHuman(state.selectedDateStr)}`);
+      lines.push(`*Franja:* ${state.timeSlot}`);
+      lines.push(`*Modalidad:* ${state.deliveryMethod === 'retiro' ? 'Retiro en Berazategui' : 'Envío a coordinar'}`);
+      if (state.deliveryMethod === 'envio' && address) {
+        lines.push(`*Dirección:* ${address}`);
+      }
+
+      lines.push('', '*Detalle del pedido:*');
+      let subtotal = 0;
+      let hasConsult = false;
+
+      state.cart.forEach((item) => {
+        const hasPrice = typeof item.price === 'number' && !Number.isNaN(item.price);
+        if (hasPrice) {
+          const itemTotal = item.price * item.qty;
+          subtotal += itemTotal;
+          lines.push(`• ${item.qty}x ${item.name}${item.variant ? ` (${item.variant})` : ''} — ${formatMoney(itemTotal)}`);
+        } else {
+          hasConsult = true;
+          lines.push(`• ${item.qty}x ${item.name}${item.variant ? ` (${item.variant})` : ''} — Consultar precio`);
+        }
+      });
+
+      lines.push('', `*Subtotal estimado:* ${formatMoney(subtotal)}${hasConsult ? ' + ítems a consultar' : ''}`);
+      if (notes) {
+        lines.push(`*Notas:* ${notes}`);
+      }
+
+      return lines.join('
+');
+    }
+
+    function openWhatsappSummaryModal() {
+      if (state.cart.length === 0) {
+        showFeedback('Agregá al menos un producto al pedido antes de generar el mensaje de WhatsApp.');
+        return;
+      }
+
+      const minKey = toDateKey(getMinimumAllowedDate());
+      if (!state.selectedDateStr || state.selectedDateStr < minKey) {
+        showFeedback('Seleccioná una fecha válida con al menos 24 horas de anticipación.');
+        return;
+      }
+
+      const message = buildWhatsappOrderMessage();
+      const preview = document.getElementById('modal-message-preview');
+      const waLink = document.getElementById('modal-wa-link');
+      const modal = document.getElementById('whatsapp-modal');
+
+      if (preview) preview.textContent = message;
+      if (waLink) {
+        waLink.href = `https://wa.me/${ROXANA_WA_NUMBER}?text=${encodeURIComponent(message)}`;
+      }
+      if (modal) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      }
+      lucide.createIcons();
+    }
+
+    function closeWhatsappModal() {
+      const modal = document.getElementById('whatsapp-modal');
+      if (modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    }
+
+    function copyWhatsappMessage() {
+      const text = document.getElementById('modal-message-preview')?.textContent || '';
+      const label = document.getElementById('copy-btn-label');
+      try {
+        const helper = document.createElement('textarea');
+        helper.value = text;
+        document.body.appendChild(helper);
+        helper.select();
+        document.execCommand('copy');
+        document.body.removeChild(helper);
+        if (label) label.textContent = '¡Copiado!';
+        setTimeout(() => {
+          if (label) label.textContent = 'Copiar texto';
+        }, 2000);
+      } catch (e) {
+        if (label) label.textContent = 'Seleccioná y copiá';
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      initFixedHeroImages();
+      initCalendar();
+      renderProducts();
+      renderPackBuilder();
+      renderCart();
+      lucide.createIcons();
+    });
+  </script>
+</body>
+</html>
